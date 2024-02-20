@@ -1,8 +1,19 @@
-# React + Vite
+# Frontend Development Guide
+By: Caden Milne
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🧑‍💻 Develop Locally:
 
-Currently, two official plugins are available:
+### 🚨 Requirements:
+- Node + NPM https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+- A text editor (any)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ✅ Intructions:
+1. Clone repo, or Pull
+2. run `npm i`
+3. run `npm run dev`
+4. Open the "localhost:xxxx" on any web browser
+5. Your changes should be reflected in real time
+
+## 🧐 General:
+- Please submit a pull request with changes + name it well.
+- Please adhere to the best practices for writing code, structuring the project, and naming/commenting.
