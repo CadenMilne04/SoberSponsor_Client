@@ -1,18 +1,26 @@
-import React, { useState } from 'react'
-import NavBar from '../components/NavBar'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
+import Background from '../components/Background';
+import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Landing() {
-    const navigate = useNavigate();
     const [promptState, setPromptState] = useState("login");
+    const {loggedIn} = useAuth();
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(loggedIn){
+            navigate("/home");
+        }
+    }, [loggedIn]);
     return (
-        <div className='h-screen' style={{backgroundImage: 'url(/jungle-bg.jpeg)'}}>
-        <NavBar />
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-8 pt-32 p-8'>
-                <div className='flex flex-col gap-3 m-0 xl:items-end'>
+        <div className='h-screen relative'>
+            <Background />
+            <div className='relative grid grid-cols-1 h-3/4 md:grid-cols-2 gap-8 pt-32 p-8'>
+                <div className='flex flex-col gap-3 m-auto justify-center xl:items-end'>
                     <h1 className='text-center font-serif text-5xl bg-zinc-900 xl:w-3/4 text-white rounded-md p-6'>
                         Sober Sponsor
                     </h1>
@@ -31,14 +39,7 @@ function Landing() {
                 {promptState == "register" &&
                     <RegisterForm setPromptState={setPromptState} /> 
                 }
-                
-                
-                {promptState == "loggedIn" &&
 
-                    <div className='flex flex-col justify-center bg-white rounded-md xl:w-3/5 xl:justify-start xl:ml-0 m-auto gap-3 py-8 px-14'>
-                        Hello!
-                    </div>
-                }
             </div>
         </div>
     )
