@@ -6,6 +6,9 @@ import Footer from "./components/Footer.jsx"
 import Meetings from "./pages/Meetings.jsx"
 import Profile from "./pages/Profile.jsx"
 import { AuthProvider } from "./contexts/AuthContext.jsx"
+import Journal from "./pages/Journal.jsx"
+import Tracker from "./pages/Tracker.jsx"
+import Contacts from "./pages/Contacts.jsx"
 
 function App() {
 
@@ -23,6 +26,9 @@ function App() {
                     <Route path="/meetings" element={<Meetings />} />
 
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/journal" element={<Journal />} />
+                    <Route path="/tracker" element={<Tracker />} />
+                    <Route path="/contacts" element={<Contacts />} />
                 </Route>
             </Routes>
 

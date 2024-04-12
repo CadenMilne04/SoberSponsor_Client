@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
-import JWTServices from '../services/JWTSevice';
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext';
 
@@ -7,7 +6,7 @@ function NavBar() {
     const {loggedIn, user} = useAuth();
 
     return (
-        <nav className='grid grid-cols-2 text-white align-middle bg-zinc-900 border-b-green-500 border-b-2 h-20 font-thin text-xl'>
+        <nav className='fixed top-0 z-50 w-full grid grid-cols-2 text-white align-middle bg-zinc-900 border-b-green-500 border-b-2 h-20 font-thin text-xl'>
             <ul className='flex flex-row justify-start ml-4 my-auto gap-3'>
                 <NavLink className="hover:text-green-500" to="/home">
                     Home

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Background() {
     return (
-        <div className='h-screen' 
+        <div  
             style={{
                 position: "absolute",
                 top: "0",
@@ -12,7 +12,7 @@ function Background() {
                 height: "100%"
             }}>
 
-            <div className='h-screen' style={{
+            <div style={{
                 backgroundImage: 'url(/jungle-bg.jpeg)',
                 backgroundSize: "cover",
                 backgroundPosition: "center",

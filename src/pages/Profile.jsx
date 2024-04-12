@@ -1,7 +1,5 @@
 import Background from "../components/Background"
 import React from 'react'
-import JWTServices from "../services/JWTSevice"
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function Profile() {
@@ -9,11 +7,11 @@ function Profile() {
 
 
     return (
-        <div className="relative">
+        <div className="relative h-screen">
             <Background />
 
-            <div className="relative flex justify-center">
-                <button className="bg-zinc-50 m-auto" onClick={logout}>Sign Out</button>
+            <div className="relative flex flex-row gap-3 p-3 justify-end">
+                <button className="bg-red-600 hover:bg-red-700 text-white p-1 rounded-md font-serif text-xl text-white w-fit " onClick={logout}>Sign Out</button>
             </div>
         </div>
     )
