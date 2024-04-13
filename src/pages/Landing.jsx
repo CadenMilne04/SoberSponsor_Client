@@ -17,7 +17,7 @@ function Landing() {
         }
     }, [loggedIn]);
     return (
-        <div className='h-screen relative'>
+        <div className='h-screen relative py-14'>
             <Background />
             <div className='relative grid grid-cols-1 h-3/4 md:grid-cols-2 gap-8 pt-32 p-8'>
                 <div className='flex flex-col gap-3 m-auto justify-center xl:items-end'>

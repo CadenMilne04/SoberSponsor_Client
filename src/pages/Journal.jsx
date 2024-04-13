@@ -9,19 +9,14 @@ function Journal() {
         {title: "Day 2", body: "I drank today anyways, I am quitting SoberSponsor lol"}]);
 
     function addNewEntry(newTitle, newBody){
-        alert(entries);
         setEntries([...entries, {title: newTitle, body: newBody}]);
     }
 
     return (
-        <div className='relative h-screen py-5'>
+        <div className='relative h-fit py-14 flex mt-20 justify-center'>
             <Background />
 
-            <div className='relative w-3/4 m-auto items-center bg-white rounded-md bg-opacity-70 p-3'>
-                <h1 className='relative w-fit mb-3 font-serif text-5xl bg-zinc-900 text-white rounded-md p-3'>
-                    Journal:
-                </h1>
-
+            <div className='relative flex flex-col bg-zinc-900 border-green-500 border-2 rounded-xl p-9 px-32 gap-9 w-2/3 h-fit'>
                 <JournalNewEntry addNewEntry={addNewEntry}/>
 
                 <JournalEntries entries={entries}/>
