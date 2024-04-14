@@ -14,7 +14,7 @@ function Meetings() {
         }
     }, []);
     return (
-        <div className='relative h-fit mt-20 py-14 flex justify-center'>
+        <div className='relative h-screen mt-20 py-14 flex justify-center'>
             <Background />
 
             <MeetingsFeed /> 

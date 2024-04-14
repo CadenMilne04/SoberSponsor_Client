@@ -45,12 +45,14 @@ function Homepage() {
     return (
         <div className='relative mt-20 py-14'>
             <Background />
-            <div className='relative h-screen grid grid-cols-2'>
-                <div className='flex flex-col w-3/4 py-7 m-auto h-full'>
+            <div className='relative h-screen grid grid-cols-2 place-items-center'>
+
+                <div className='flex flex-col w-3/4 m-0 h-full'>
                     <NextMilestone data = {data}/> 
                     <JournalNewEntry getEntries={foo}/> 
                 </div>
-                <div className='w-3/4 flex m-auto justify-center'>
+
+                <div className='w-3/4 flex m-0 justify-center h-full'>
                     <MeetingsFeed />
                 </div>
             </div>
