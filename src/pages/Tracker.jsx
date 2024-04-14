@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Background from '../components/Background'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import NextMilestone from '../components/NextMilestone';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 function Tracker() {
+    const { loggedIn } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(loggedIn == false){
+            navigate("/");
+        }
+    }, []);
+
     ChartJS.register(ArcElement, Tooltip, Legend);
 
     const data = {

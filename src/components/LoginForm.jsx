@@ -1,14 +1,15 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import  JWTServices from '../services/JWTSevice';
 import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [invalid, setInvalid] = useState(false);
 
-    const {login} = useAuth();
+    const { login } = useAuth();
 
     async function signInUser(){
         try {
@@ -19,7 +20,7 @@ function LoginForm(props) {
             }
 
             //Make the request
-            const response = await axios.post("http://localhost:3000/api/user/sign-in", request);
+            const response = await axios.post("https://sobersponsor-server.onrender.com/api/user/sign-in", request);
 
             //Isvalid
             setInvalid(false);
@@ -43,7 +44,7 @@ function LoginForm(props) {
             {invalid && <p className='text-red-500'>Invalid username or password.</p>}
             <input value={username} onChange={(e) => {setUsername(e.target.value)}} type="text" placeholder="Username" name="" id="" className='bg-zinc-800 rounded p-1 text-white'/>
             <input value={password} onChange={(e) => {setPassword(e.target.value)}} type="password" placeholder="Password" name="" id="" className='bg-zinc-800 rounded p-1 text-white'/>
-            <input onClick={signInUser} type="submit" value="Log In" name="" id="" className='cursor-pointer bg-green-600 hover:bg-green-700 shadow-lg m-auto px-7 py-0.5 rounded font-serif text-xl text-white'/>
+            <input onClick={signInUser} type="submit" className='cursor-pointer bg-green-600 hover:bg-green-700 shadow-lg m-auto px-7 py-0.5 rounded font-serif text-xl text-white'/>
             
             <p>Don't have an account? <a onClick={() => {props.setPromptState("register")}} className='font-bold cursor-pointer'>Sign up here.</a></p>
         </div>

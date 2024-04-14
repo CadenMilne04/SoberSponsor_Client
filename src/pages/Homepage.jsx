@@ -4,8 +4,21 @@ import JournalNewEntry from '../components/JournalNewEntry'
 import NextMilestone from '../components/NextMilestone';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import MeetingsFeed from '../components/MeetingsFeed';
+import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
+    
+    const { loggedIn } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(loggedIn == false){
+            navigate("/");
+        }
+    }, []);
+
+
     const [entries, setEntries] = useState([{title: "Day 1", body: "I am finally deciding to quit the drinking"}, 
         {title: "Day 2", body: "I drank today anyways, I am quitting SoberSponsor lol"}]);
 

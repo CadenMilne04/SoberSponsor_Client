@@ -1,18 +1,27 @@
 import Background from "../components/Background"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
-    const {logout} = useAuth();
+    const {loggedIn, logout} = useAuth();
+
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
     const [location, setLocation] = useState("");
     const [soberDate, setSoberDate] = useState("");
     const [editing, setEditing] = useState(false);
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(loggedIn == false){
+            navigate("/");
+        }
+    }, [loggedIn]);
+
     function handleEdit(){
         setEditing(!editing);
-
     }
 
 
