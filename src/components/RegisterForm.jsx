@@ -31,7 +31,7 @@ function RegisterForm(props) {
             }
 
             //Make the request
-            const response = await axios.post("https://sobersponsor-server.onrender.com/api/user/", request);
+            const response = await axios.post("https://sobersponsor-server.onrender.com/api/user/create", request);
 
             //Is valid
             setInvalid(false);

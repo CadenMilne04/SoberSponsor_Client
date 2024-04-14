@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const JWTServices = {
 
@@ -33,6 +33,23 @@ const JWTServices = {
         }
         catch (error) {
             return null;
+        }
+    },
+
+    async refreshJWT(){
+        try {
+            const token = this.getToken();
+
+            const request = {
+                token: token,
+            }
+
+            const response = await axios.post("https://sobersponsor-server.onrender.com/api/user/refresh-jwt", request);
+
+            this.removeToken();
+            this.setToken(response.data.token);
+        } catch (error) {
+            console.log(error);
         }
     }
 };

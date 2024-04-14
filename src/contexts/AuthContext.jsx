@@ -7,6 +7,8 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState("");
+  const [location, setLocation] = useState("");
+  const [quitDate, setQuitDate] = useState("");
 
   const navigate = useNavigate();
 
@@ -15,6 +17,8 @@ export const AuthProvider = ({ children }) => {
     const decodedToken = JWTServices.isLoggedIn()
     if(decodedToken){
         setUser(decodedToken.username);
+        setLocation(decodedToken.location);
+        setQuitDate(decodedToken.quitDate);
         setLoggedIn(true);
     }
   };
@@ -27,12 +31,24 @@ export const AuthProvider = ({ children }) => {
     navigate("/");
   };
 
+  const refreshJWT = () => {
+    JWTServices.refreshJWT();
+
+    const decodedToken = JWTServices.isLoggedIn()
+
+    setUser(decodedToken.username);
+    setLocation(decodedToken.location);
+    setQuitDate(decodedToken.quitDate);
+    setLoggedIn(true);
+
+  };
+
     useEffect(() => {
         login();
     }, []);
 
   return (
-    <AuthContext.Provider value={{ loggedIn, login, logout, user }}>
+    <AuthContext.Provider value={{ loggedIn, login, logout, user, location, quitDate, refreshJWT }}>
       {children}
     </AuthContext.Provider>
   );

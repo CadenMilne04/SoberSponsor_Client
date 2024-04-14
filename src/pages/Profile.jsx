@@ -2,14 +2,21 @@ import Background from "../components/Background"
 import React, { useEffect, useState } from 'react'
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import JWTServices from "../services/JWTSevice";
 
 function Profile() {
-    const {loggedIn, logout} = useAuth();
+    const { logout, login, loggedIn, quitDate, user, location, refreshJWT } = useAuth();
 
-    const [user, setUser] = useState("");
+    const [somethingWentWrong, setSomethingWentWrong] = useState(false);
+
+    const [usern, setUsern] = useState("");
     const [password, setPassword] = useState("");
-    const [location, setLocation] = useState("");
-    const [soberDate, setSoberDate] = useState("");
+    const [locationn, setLocationn] = useState("");
+    const [quitDaten, setQuitDaten] = useState(new Date());
+
     const [editing, setEditing] = useState(false);
 
     const navigate = useNavigate();
@@ -18,10 +25,81 @@ function Profile() {
         if(loggedIn == false){
             navigate("/");
         }
-    }, [loggedIn]);
+
+        setUsern(user);
+        setLocationn(location);
+        setQuitDaten((quitDate));
+
+    }, [loggedIn, user, location, quitDate]);
 
     function handleEdit(){
+        setUsern(user);
+        setLocationn(locationn);
+        setQuitDaten((quitDaten));
+        
         setEditing(!editing);
+    }
+    
+    async function savePassword(){
+        try {
+            const token = JWTServices.getToken();
+
+            const request = {
+                token: token,
+                password: password
+            }
+
+            const response = await axios.patch("https://sobersponsor-server.onrender.com/api/user/update/password", request);
+
+            alert(response.data.message);
+
+            setSomethingWentWrong(false);
+            handleEdit();
+        } catch (error) {
+            setSomethingWentWrong(true);
+        }
+
+    }
+
+    async function saveLocation(){
+        try {
+            const token = JWTServices.getToken();
+
+            const request = {
+                token: token,
+                location: locationn
+            }
+
+            const response = await axios.patch("https://sobersponsor-server.onrender.com/api/user/update/location", request);
+
+
+            refreshJWT();
+            setSomethingWentWrong(false);
+            handleEdit();
+        } catch (error) {
+            setSomethingWentWrong(true);
+        }
+
+    }
+    async function saveQuitDate(){
+        try {
+            const token = JWTServices.getToken();
+
+            const request = {
+                token: token,
+                date: quitDaten
+            }
+
+            const response = await axios.patch("https://sobersponsor-server.onrender.com/api/user/update/quit-date", request);
+
+
+            refreshJWT();
+            setSomethingWentWrong(false);
+            handleEdit();
+        } catch (error) {
+            setSomethingWentWrong(true);
+        }
+
     }
 
 
@@ -31,6 +109,9 @@ function Profile() {
 
 
             <div className='relative flex flex-col justify-center bg-zinc-900 border-green-500 border-2 rounded-xl p-9 px-32 gap-9 w-2/3 h-fit'>
+                {somethingWentWrong &&
+                    <p className='text-red-500'>Something went wrong, pleaase refresh or try again.</p>
+                }
 
                 <div className="relative flex flex-row gap-3 justify-end">
                     {editing ? 
@@ -50,11 +131,11 @@ function Profile() {
                 <div className='flex gap-2 bg-gray-300 rounded-full font-light text-xl p-3'>
                     <div>Username: </div>
                     <input className='w-full bg-gray-100 rounded-full px-5' type="text" 
-                        readOnly={!editing}
+                        readOnly={true}
                         onChange={(e) => {
-                            setUser(e.target.value);
+                            setUsern(e.target.value);
                         }}
-                        value={user}/>
+                        value={usern}/>
                 </div>
 
                 <div className='flex gap-2 bg-gray-300 rounded-full font-light text-xl p-3'>
@@ -65,6 +146,9 @@ function Profile() {
                             setPassword(e.target.value);
                         }}
                         value={password}/>
+                    {editing && 
+                        <button onClick={savePassword} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xl text-white w-fit" >Save</button>
+                    }
                 </div>
 
                 <div className='flex gap-2 bg-gray-300 rounded-full font-light text-xl p-3'>
@@ -72,25 +156,23 @@ function Profile() {
                     <input className='w-full bg-gray-100 rounded-full px-5' type="text" 
                         readOnly={!editing}
                         onChange={(e) => {
-                            setLocation(e.target.value);
+                            setLocationn(e.target.value);
                         }}
-                        value={location}/>
+                        value={locationn}/>
+                    {editing && 
+                        <button  onClick={saveLocation} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xl text-white w-fit" >Save</button>
+                    }
                 </div>
 
-                <div className='flex gap-2 bg-gray-300 rounded-full font-light text-xl p-3'>
-                    <div className="w-1/4">Sober Date: </div>
-                    <input className='w-full bg-gray-100 rounded-full px-5' type="text" 
-                        readOnly={!editing}
-                        onChange={(e) => {
-                            setSoberDate(e.target.value);
-                        }}
-                        value={soberDate}/>
+                <div className='flex gap-2 w-fit bg-gray-300 rounded-full font-light text-xl p-3'>
+                    <div className="w-fit">Sober Date: </div>
+                    <DatePicker className="w-full bg-gray-100 rounded-full px-5" readOnly={!editing} selected={quitDaten} onChange={(date) => {setQuitDaten(date)}}/> 
+                    {editing && 
+                        <button onClick={saveQuitDate} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xl text-white w-fit" >Save</button>
+                    }
                 </div>
 
                 
-                {editing && 
-                    <button className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xl text-white w-fit " >Save</button>
-                }
             </div>
         </div>
     )

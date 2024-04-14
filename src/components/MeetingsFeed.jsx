@@ -26,6 +26,7 @@ function MeetingsFeed() {
                 return (
                     <MeetingCard 
                         title={post.title}
+                        key={i}
                         desc={post.desc}
                         location={post.location}
                     />

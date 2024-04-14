@@ -18,16 +18,11 @@ function Homepage() {
         }
     }, []);
 
-
-    const [entries, setEntries] = useState([{title: "Day 1", body: "I am finally deciding to quit the drinking"}, 
-        {title: "Day 2", body: "I drank today anyways, I am quitting SoberSponsor lol"}]);
-
-    function addNewEntry(newTitle, newBody){
-        alert(entries);
-        setEntries([...entries, {title: newTitle, body: newBody}]);
-    }
-
     ChartJS.register(ArcElement, Tooltip, Legend);
+    
+    function foo(){
+
+    }
 
     const data = {
       labels: ['Days Remaining', 'Days Complete'],
@@ -53,7 +48,7 @@ function Homepage() {
             <div className='relative h-screen grid grid-cols-2'>
                 <div className='flex flex-col w-3/4 py-7 m-auto h-full'>
                     <NextMilestone data = {data}/> 
-                    <JournalNewEntry  addNewEntry={addNewEntry}/> 
+                    <JournalNewEntry getEntries={foo}/> 
                 </div>
                 <div className='w-3/4 flex m-auto justify-center'>
                     <MeetingsFeed />
