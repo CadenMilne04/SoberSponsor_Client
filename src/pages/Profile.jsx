@@ -166,7 +166,7 @@ function Profile() {
 
                 <div className='flex gap-2 w-fit bg-gray-300 rounded-full font-light text-xl p-3'>
                     <div className="w-fit">Sober Date: </div>
-                    <DatePicker className="w-full bg-gray-100 rounded-full px-5" readOnly={!editing} selected={quitDaten} onChange={(date) => {setQuitDaten(date)}}/> 
+                    <DatePicker className="w-full bg-gray-100 rounded-full px-5" readOnly={!editing} selected={Date.parse(quitDaten)} onChange={(date) => {setQuitDaten(date)}}/> 
                     {editing && 
                         <button onClick={saveQuitDate} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xl text-white w-fit" >Save</button>
                     }
