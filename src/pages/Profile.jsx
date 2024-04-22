@@ -115,22 +115,22 @@ function Profile() {
 
                 <div className="relative flex flex-row gap-3 justify-end">
                     {editing ? 
-                        <button className="bg-orange-600 hover:bg-orange-700 text-white p-1 px-3 rounded-md font-thin text-xl text-white w-fit " 
+                        <button className="bg-orange-600 hover:bg-orange-700 text-white p-1 px-3 rounded-md font-thin text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl w-90 text-white w-fit " 
                             onClick={handleEdit}>
                             Cancel
                         </button>
                         : 
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white p-1 px-3 rounded-md font-thin text-xl text-white w-fit " 
+                        <button className="bg-blue-600 hover:bg-blue-700 text-white p-1 px-3 rounded-md font-thin text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl w-90 text-white w-fit " 
                             onClick={handleEdit}>
                             Edit
                         </button>
                     }
-                    <button className="bg-red-600 hover:bg-red-700 text-white p-1 px-3 rounded-md font-thin text-xl text-white w-fit " onClick={logout}>Sign Out</button>
+                    <button className="bg-red-600 hover:bg-red-700 text-white p-1 px-3 rounded-md font-thin text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl w-90 text-white w-fit " onClick={logout}>Sign Out</button>
                 </div>
                 
-                <div className='flex gap-2 bg-gray-300 rounded-full font-light text-xl p-3'>
+                <div className='flex gap-2 bg-gray-300 rounded-sm font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl w-90 p-3'>
                     <div>Username: </div>
-                    <input className='w-full bg-gray-100 rounded-full px-5' type="text" 
+                    <input className='w-full bg-gray-100 rounded-sm px-5' type="text" 
                         readOnly={true}
                         onChange={(e) => {
                             setUsern(e.target.value);
@@ -138,37 +138,37 @@ function Profile() {
                         value={usern}/>
                 </div>
 
-                <div className='flex gap-2 bg-gray-300 rounded-full font-light text-xl p-3'>
+                <div className='flex gap-2 bg-gray-300 rounded-sm font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl w-90 p-3'>
                     <div>Password: </div>
-                    <input className='w-full bg-gray-100 rounded-full px-5' type="password" 
+                    <input className='w-full bg-gray-100 rounded-sm px-5' type="password" 
                         readOnly={!editing}
                         onChange={(e) => {
                             setPassword(e.target.value);
                         }}
                         value={password}/>
                     {editing && 
-                        <button onClick={savePassword} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xl text-white w-fit" >Save</button>
+                        <button onClick={savePassword} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white w-fit" >Save</button>
                     }
                 </div>
 
-                <div className='flex gap-2 bg-gray-300 rounded-full font-light text-xl p-3'>
+                <div className='flex gap-2 bg-gray-300 rounded-sm font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl w-90 p-3'>
                     <div>Location: </div>
-                    <input className='w-full bg-gray-100 rounded-full px-5' type="text" 
+                    <input className='w-full bg-gray-100 rounded-sm px-5' type="text" 
                         readOnly={!editing}
                         onChange={(e) => {
                             setLocationn(e.target.value);
                         }}
                         value={locationn}/>
                     {editing && 
-                        <button  onClick={saveLocation} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xl text-white w-fit" >Save</button>
+                        <button  onClick={saveLocation} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white w-fit" >Save</button>
                     }
                 </div>
 
-                <div className='flex gap-2 w-fit bg-gray-300 rounded-full font-light text-xl p-3'>
+                <div className='flex gap-2 w-fit bg-gray-300 rounded-full font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl w-90 p-3'>
                     <div className="w-fit">Sober Date: </div>
                     <DatePicker className="w-full bg-gray-100 rounded-full px-5" readOnly={!editing} selected={Date.parse(quitDaten)} onChange={(date) => {setQuitDaten(date)}}/> 
                     {editing && 
-                        <button onClick={saveQuitDate} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xl text-white w-fit" >Save</button>
+                        <button onClick={saveQuitDate} className="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md font-thin text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white w-fit" >Save</button>
                     }
                 </div>
 

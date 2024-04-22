@@ -19,7 +19,7 @@ function MeetingsFeed() {
 
     }
     return (
-        <div className='relative flex flex-col m-0 gap-5'>
+        <div className='relative flex flex-col m-0 gap-5 h-4/5 overflow-y-auto'>
             {posts.map((post, i) => {
                 return (
                     <MeetingCard 

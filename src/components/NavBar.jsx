@@ -9,7 +9,7 @@ function NavBar() {
         
         <div>
             {loggedIn &&
-                <nav className='fixed top-0 z-50 w-full grid grid-cols-2 text-white align-middle bg-zinc-900 border-b-green-500 border-b-2 h-20 font-thin text-xl'>
+                <nav className='fixed top-0 z-50 w-full grid grid-cols-2 text-white align-middle bg-zinc-900 border-b-green-500 border-b-2 font-thin text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl' style={{ height: "10vh" }}>
                     <ul className='flex flex-row justify-start ml-4 my-auto gap-3'>
                         <NavLink className="hover:text-green-500" to="/home">
                             Home
@@ -34,6 +34,7 @@ function NavBar() {
                         </NavLink>
                     </div>
                 </nav>
+            
             }
         </div>
     )

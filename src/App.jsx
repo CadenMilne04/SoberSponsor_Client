@@ -14,28 +14,35 @@ function App() {
 
     return (
         <BrowserRouter>
-        <AuthProvider>
+    <AuthProvider>
+        <div className="flex flex-col min-h-screen">
             <header>
                 <NavBar />
             </header>
 
-            <Routes>
-                <Route path="/">
-                    <Route path="/" element={<Landing />} />
-                    <Route path="/home" element={<Homepage />} />
-                    <Route path="/meetings" element={<Meetings />} />
+            <main className="h-80vh overflow-y-hidden">
 
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/journal" element={<Journal />} />
-                    <Route path="/tracker" element={<Tracker />} />
-                    <Route path="/contacts" element={<Contacts />} />
-                </Route>
-            </Routes>
+                <div className="flex-grow flex-shrink overflow-y-hidden">
+                    <Routes>
+                        <Route path="/">
+                            <Route path="/" element={<Landing />} />
+                            <Route path="/home" element={<Homepage />} />
+                            <Route path="/meetings" element={<Meetings />} />
+                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/journal" element={<Journal />} />
+                            <Route path="/tracker" element={<Tracker />} />
+                            <Route path="/contacts" element={<Contacts />} />
+                        </Route>
+                    </Routes>
+                </div>
+            </main>
 
-        <Footer />
+            <Footer />
+        </div>
+    </AuthProvider>
+</BrowserRouter>
 
-        </AuthProvider>
-        </BrowserRouter>
+    
     )
 }
 

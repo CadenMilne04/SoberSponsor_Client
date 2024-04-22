@@ -47,9 +47,9 @@ function NextMilestone() {
     return (
         <div className='flex flex-col justify-center bg-gray-300 rounded-3xl font-light p-3'>
             <p className='m-auto'>Next Milestone: {nextMilestone} days</p>
-            <div className='w-1/2 m-auto'>
+            <div className='w-1/2 m-auto my-0 min-w-[120px]'>
                 <Pie 
-                data={data}
+                    data={data}
                 />
             </div>
         </div>
