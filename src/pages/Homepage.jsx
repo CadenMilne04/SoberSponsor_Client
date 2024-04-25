@@ -45,7 +45,7 @@ function Homepage() {
     return (
         <div className='relative mt-20 py-14'>
             <Background />
-            <div className='relative h-screen grid grid-cols-2 place-items-center'>
+            <div className='relative h-90 overflow-y-hidden grid grid-cols-2 place-items-center'>
 
                 <div className='flex flex-col w-3/4 m-0 h-full'>
                     <NextMilestone data = {data}/> 

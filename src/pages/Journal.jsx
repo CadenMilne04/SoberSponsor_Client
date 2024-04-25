@@ -46,7 +46,7 @@ function Journal() {
         <div className='relative h-screen py-14 flex mt-20 justify-center'>
             <Background />
 
-            <div className='relative flex flex-col bg-zinc-900 border-green-500 border-2 rounded-xl p-9 px-32 gap-9 w-2/3 h-fit'>
+            <div className='relative flex flex-col bg-zinc-900 border-green-500 border-2 rounded-xl p-9 px-32 gap-9 w-fit h-fit'>
                 <JournalNewEntry getEntries={getEntries}/>
 
                 <JournalEntries entries={entries}/>

@@ -2,12 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    overflow: hidden;
+html,
+body {
+    margin: 0;
+    padding: 0;
     height: 100%;
 }
 
 body {
-    overflow: auto;
-    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#root {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Apply styles for different screen sizes */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    body {
+        font-size: 20px;
+    }
 }
